@@ -6,19 +6,11 @@ document.getElementById("btnRegistrar").addEventListener("click", async () => {
   console.log(animales);
   const animalSeleccionado = document.getElementById("animal").value;
   console.log(animalSeleccionado);
-  const informacionAnimales = animales.find((p) => p.name == animalSeleccionado).imagen.join(`<img widht="200" src="/assets/imgs/${animalSeleccionado}"/>`);
-  console.log(informacionAnimales);
-  document.getElementById("Animales").innerHTML = informacionAnimales;
-
-  // document.querySelectorAll(".animales img").forEach((i) => {
-  //   i.addEventListener("click", (e) => {
-  //     $("#imagenModal").modal("toggle");
-  //     const imagenSrc = e.target.src;
-  //     document.getElementById(
-  //       "preview"
-  //     ).style.backgroundImage = `url(${imagenSrc})`;
-  //   });
-  // });
+  const informacionAnimales = animales.find((p) => p.name == animalSeleccionado);
+  console.log(informacionAnimales.imagen);
+  document.getElementById("preview").innerHTML = `<img width = 200px src="./assets/imgs/${informacionAnimales.imagen}"> `;
+  document.getElementById("player").innerHTML = `<audio src="./assets/sounds/${informacionAnimales.sonido}"> `;
+  
 });
 
 // export default class Animal {
