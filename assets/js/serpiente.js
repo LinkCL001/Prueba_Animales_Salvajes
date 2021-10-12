@@ -1,5 +1,9 @@
-// import Animal from "./animal";
+import Animal from "./animal";
 
-// export default class Serpiente extends Animal{
-//     Sisear()
-// }
+export default class Serpiente extends Animal{
+    constructor(nombre, edad, img, comentarios, sonido){
+        super(nombre, edad, img , comentarios, sonido)
+    }
+    Sisear()
+}
+export{Serpiente}
