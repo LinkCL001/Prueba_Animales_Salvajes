@@ -1,9 +1,12 @@
-import Animal from "./animal";
+import Animal from "./animal.js";
 
-export default class Oso extends Animal{
+class Oso extends Animal{
     constructor(nombre, edad, img, comentarios, sonido){
         super(nombre, edad, img , comentarios, sonido)
     }
-    Grunir()
+    Grunir(){
+        let grunir = this.getSonido();
+        return grunir
+    }
 }
-export{Oso}
+export{Oso};

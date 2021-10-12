@@ -1,61 +1,67 @@
-import {Leon, Lobo, Oso, Serpiente, Aguila } from "./leon"; "./lobo"; "./oso"; "./serpiente"; "./aguila";
-import Animales from './consulta'
+import {Leon} from "./leon.js"; 
+import {Lobo} from "./lobo.js";
+import {Oso} from "./oso.js";
+import {Serpiente} from "./serpiente.js";
+import {Aguila} from "./aguila.js";
 
-let comentarios = [];
+let animales = [];
 
-document.getElementById("btnRegistrar").addEventListener("click", async () => {     //manejo del dom id creando evento click                                                                                  
-  const { animales } = await Animales.getData();
-  console.log(animales);
-  const animalSeleccionado = document.getElementById("animal").value;
-  const informacionAnimales = animales.find((p) => p.name == animalSeleccionado);
-
+document.getElementById("btnRegistrar").addEventListener("click", () => {     //manejo del dom id creando evento click                                                                                  
   let nombre = document.getElementById("animal");
   let edad = document.getElementById("edad");
-  let img = `<img width = 200px src="./assets/imgs/${informacionAnimales.imagen}"> `
-  let sonido = `<audio src="./assets/sounds/${informacionAnimales.sonido}"> `
+  let previewImg = document.getElementById("preview");
+  let imagenSrc = previewImg.style.backgroundImage;
+  let imgSrc = imagenSrc.slice(5, imagenSrc.length - 2);
+  let sonido = document.getElementById("player");
+  let comentarios = document.getElementById("comentarios");
 
-  let nuevoComentario = document.getElementById("comentarios").value;
+  let nuevoAnimal;
 
   if (nombre.value == "Leon"){
-    nuevoComentario = new Leon(
+    nuevoAnimal = new Leon(
       nombre.value,
       edad.value,
-      img,
+      imgSrc,
       sonido,
+      comentarios.value,
     );
   }
-  if (nombre.value == "Lobo"){
-    nuevoComentario = new Lobo(
+  else if (nombre.value == "Lobo"){
+    nuevoAnimal = new Lobo(
       nombre.value,
       edad.value,
-      img,
+      imgSrc,
       sonido,
+      comentarios.value,
     );
   }  
-  if(nombre.value == "Oso"){
-    nuevoComentario = new Oso(
+  else if(nombre.value == "Oso"){
+    nuevoAnimal = new Oso(
       nombre.value,
       edad.value,
-      img,
+      imgSrc,
       sonido,
+      comentarios.value,
     );
   }
-  if(nombre.value == "Serpiente"){
-    nuevoComentario = new Serpiente(
+  else if(nombre.value == "Serpiente"){
+    nuevoAnimal = new Serpiente(
       nombre.value,
       edad.value,
-      img,
+      imgSrc,
       sonido,
+      comentarios.value,
     );
   }
-  if(nombre.value == "Aguila"){
-    nuevoComentario = new Aguila(
+  else if(nombre.value == "Aguila"){
+    nuevoAnimal = new Aguila(
       nombre.value,
       edad.value,
-      img,
+      imgSrc,
       sonido,
+      comentarios.value,
     );
   }
-  comentarios.push(nuevoComentario);
-  console.log(comentarios);
+  animales.push(nuevoAnimal);
 });
+

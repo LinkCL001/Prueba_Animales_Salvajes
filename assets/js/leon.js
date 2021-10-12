@@ -1,9 +1,12 @@
-import Animal from "./animal";
+import Animal from "./animal.js";
 
-export default class Leon extends Animal{
+class Leon extends Animal{
     constructor(nombre, edad, img, comentarios, sonido){
         super(nombre, edad, img , comentarios, sonido)
     }
-    Rugir()
+    Rugir(){
+        let rugir = this.getSonido();
+        return rugir
+    }
 }
-export{Leon}
+export{Leon};
