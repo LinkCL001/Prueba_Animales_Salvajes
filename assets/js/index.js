@@ -1,67 +1,71 @@
-import {Leon} from "./leon.js"; 
-import {Lobo} from "./lobo.js";
-import {Oso} from "./oso.js";
-import {Serpiente} from "./serpiente.js";
-import {Aguila} from "./aguila.js";
+import Leon from "./leon.js"; 
+import Lobo from "./lobo.js";
+import Oso from "./oso.js";
+import Serpiente from "./serpiente.js";
+import Aguila from "./aguila.js";
+import Animales from './consulta.js';
 
-let animales = [];
+let animalesInvestigados = []
 
-document.getElementById("btnRegistrar").addEventListener("click", () => {     //manejo del dom id creando evento click                                                                                  
-  let nombre = document.getElementById("animal");
-  let edad = document.getElementById("edad");
-  let previewImg = document.getElementById("preview");
-  let imagenSrc = previewImg.style.backgroundImage;
-  let imgSrc = imagenSrc.slice(5, imagenSrc.length - 2);
-  let sonido = document.getElementById("player");
-  let comentarios = document.getElementById("comentarios");
+document.getElementById("btnRegistrar").addEventListener("click", async () => {
+  const { animales } = await Animales.getData();  
+  const animalSeleccionado = document.getElementById("animal").value;
+  const informacionAnimales = animales.find((p) => p.name == animalSeleccionado);
+  let nombre = document.getElementById("animal").value;
+  let edad = document.getElementById("edad").value;
+  let img = `<img width = 200px src="./assets/imgs/${informacionAnimales.imagen}"> `;
+  document.getElementById("preview").innerHTML = img;
+  let sonido = `<audio src="./assets/sounds/${informacionAnimales.sonido}"> `;
+  document.getElementById("player").innerHTML = sonido;
+  let comentarios = document.getElementById("comentarios").value;
 
+  
   let nuevoAnimal;
 
-  if (nombre.value == "Leon"){
-    nuevoAnimal = new Leon(
-      nombre.value,
-      edad.value,
-      imgSrc,
-      sonido,
-      comentarios.value,
-    );
+  if (nombre == "Leon"){
+    nuevoAnimal = new Leon(nombre, edad, img, comentarios, sonido)
   }
-  else if (nombre.value == "Lobo"){
-    nuevoAnimal = new Lobo(
-      nombre.value,
-      edad.value,
-      imgSrc,
-      sonido,
-      comentarios.value,
-    );
+  else if (nombre == "Lobo"){
+    nuevoAnimal = new Lobo(nombre, edad, img, comentarios, sonido)
   }  
-  else if(nombre.value == "Oso"){
-    nuevoAnimal = new Oso(
-      nombre.value,
-      edad.value,
-      imgSrc,
-      sonido,
-      comentarios.value,
-    );
+  else if (nombre == "Oso"){
+    nuevoAnimal = new Oso(nombre, edad, img, comentarios, sonido)
   }
-  else if(nombre.value == "Serpiente"){
-    nuevoAnimal = new Serpiente(
-      nombre.value,
-      edad.value,
-      imgSrc,
-      sonido,
-      comentarios.value,
-    );
+  else if (nombre == "Serpiente"){
+    nuevoAnimal = new Serpiente(nombre, edad, img, comentarios, sonido)
   }
-  else if(nombre.value == "Aguila"){
-    nuevoAnimal = new Aguila(
-      nombre.value,
-      edad.value,
-      imgSrc,
-      sonido,
-      comentarios.value,
-    );
+  else if (nombre == "Aguila"){
+    nuevoAnimal = new Aguila(nombre, edad, img, comentarios, sonido)
   }
-  animales.push(nuevoAnimal);
+  if (nombre && edad && img && comentarios){
+  animalesInvestigados.push(nuevoAnimal);
+  reloadTable();
+  } else {
+    alert("Faltan Datos por Llenar")
+  }
+  
 });
 
+const reloadTable = () => {
+  const animalesTemplate = document.getElementById("Animales");
+  animalesTemplate.innerHTML = "";
+  console.log(animalesInvestigados);
+  animalesInvestigados.forEach((a) => {
+    animalesTemplate.innerHTML +=
+    `<div class="px-3 pb-2 animales""${a.getNombre()}">
+    <div class="card">
+      <img 
+        src=./assets/imgs/${a.getImg()}
+
+        <div class="card-body">
+          <h4 class="card-tittle">${a.getNombre()}</h4>
+          <hr class="w-50 mx-auto">
+          <h6 class="card-text">Edad: ${a.getEdad()}</h6>
+          <h6 class="card-text">Comentarios: <span class="text-danger">${a.getComentarios()}</span></h6>
+          <button class="btn btn-outline-warning" onclick="sonido"${a.getSonido()}Sonido</button>
+        </div>
+    </div>
+  </div>
+  `
+  })
+}

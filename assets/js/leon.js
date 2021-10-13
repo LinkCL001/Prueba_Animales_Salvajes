@@ -5,8 +5,8 @@ class Leon extends Animal{
         super(nombre, edad, img , comentarios, sonido)
     }
     Rugir(){
-        let rugir = this.getSonido();
-        return rugir
+        // let rugir = this.getSonido();
+        // return rugir
     }
 }
-export{Leon};
+export default Leon;
