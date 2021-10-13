@@ -5,8 +5,8 @@ class Lobo extends Animal{
         super(nombre, edad, img , comentarios, sonido)
     }
     Aullar(){
-        // let aullar = this.getSonido();
-        // return aullar
+        let aullar = this.getSonido();
+        return aullar
     }
 }
 export default Lobo;

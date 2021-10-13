@@ -5,8 +5,8 @@ class Aguila extends Animal{
         super(nombre, edad, img , comentarios, sonido)
     }
     Chillar(){
-        // let chillar = this.getSonido();
-        // return chillar
+        let chillar = this.getSonido();
+        return chillar
     }
 }
 export default Aguila;

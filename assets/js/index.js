@@ -53,10 +53,7 @@ const reloadTable = () => {
   animalesInvestigados.forEach((a) => {
     animalesTemplate.innerHTML +=
     `<div class="px-3 pb-2 animales""${a.getNombre()}">
-    <div class="card">
-      <img 
-        src=./assets/imgs/${a.getImg()}
-
+    <div class="card">${a.getImg()}
         <div class="card-body">
           <h4 class="card-tittle">${a.getNombre()}</h4>
           <hr class="w-50 mx-auto">

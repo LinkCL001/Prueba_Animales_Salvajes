@@ -5,8 +5,8 @@ class Serpiente extends Animal{
         super(nombre, edad, img , comentarios, sonido)
     }
     Sisear(){
-        // let sisear = this.getSonido();
-        // return sisear
+        let sisear = this.getSonido();
+        return sisear
     }
 }
 export default Serpiente;

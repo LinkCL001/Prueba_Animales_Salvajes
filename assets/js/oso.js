@@ -5,8 +5,8 @@ class Oso extends Animal{
         super(nombre, edad, img , comentarios, sonido)
     }
     Grunir(){
-        // let grunir = this.getSonido();
-        // return grunir
+        let grunir = this.getSonido();
+        return grunir
     }
 }
 export default Oso;
