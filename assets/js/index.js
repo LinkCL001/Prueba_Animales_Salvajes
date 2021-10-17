@@ -15,7 +15,7 @@ document.getElementById("btnRegistrar").addEventListener("click", async () => {
   let edad = document.getElementById("edad").value;
   let img = `<img width = 200px src="./assets/imgs/${informacionAnimales.imagen}"> `;
   document.getElementById("preview").innerHTML = img;
-  let sonido = `<audio src="./assets/sounds/${informacionAnimales.sonido}"> `;
+  let sonido = `${informacionAnimales.sonido}`;
   document.getElementById("player").innerHTML = sonido;
   let comentarios = document.getElementById("comentarios").value;
 
@@ -39,6 +39,8 @@ document.getElementById("btnRegistrar").addEventListener("click", async () => {
   }
   if (nombre && edad && img && comentarios){
   animalesInvestigados.push(nuevoAnimal);
+  
+  comentarios = "";
   reloadTable();
   } else {
     alert("Faltan Datos por Llenar")
@@ -49,8 +51,7 @@ document.getElementById("btnRegistrar").addEventListener("click", async () => {
 const reloadTable = () => {
   const animalesTemplate = document.getElementById("Animales");
   animalesTemplate.innerHTML = "";
-  console.log(animalesInvestigados);
-  animalesInvestigados.forEach((a) => {
+  animalesInvestigados.forEach((a, i) => {
     animalesTemplate.innerHTML +=
     `<div class="px-3 pb-2 animales""${a.getNombre()}">
     <div class="card">${a.getImg()}
@@ -58,11 +59,33 @@ const reloadTable = () => {
           <h4 class="card-tittle">${a.getNombre()}</h4>
           <hr class="w-50 mx-auto">
           <h6 class="card-text">Edad: ${a.getEdad()}</h6>
-          <h6 class="card-text">Comentarios: <span class="text-danger">${a.getComentarios()}</span></h6>
-          <button class="btn btn-outline-warning" onclick="sonido"${a.getSonido()}Sonido</button>
+          <h6 class="card-text">Comentarios: <span class="text-dark">${a.getComentarios()}</span></h6>
+          <button class="btn btn-outline-warning" onclick=activarSonido('${i}')">Sonido</button>
         </div>
     </div>
   </div>
   `
   })
 }
+// window.activarSonido = (i) => {
+//   const animal  = animal[i];
+//   if (animal.getNombre == "Leon"){
+//     animal.Rugir();
+//   } else if (animal.getNombre == "Lobo"){
+//     animal.Aullar();
+//   }
+//   else if (animal.getNombre == "Oso"){
+//     animal.Grunir();
+//   }
+//   else if (animal.getNombre == "Serpiente"){
+//     animal.Sisear();
+//   }
+//   else if (animal.getNombre == "Aguila"){
+//     animal.Chillar();
+//   }
+//   reloadTable();
+// };
+
+// document.getElementsByClassName("card").addEventListener("click",{
+
+// })
