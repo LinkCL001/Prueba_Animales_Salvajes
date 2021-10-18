@@ -14,22 +14,22 @@ class Animal {
     this.setComentarios = (comentarios) => (Comentarios = comentarios);
   }
   get Nombre() {
-    return this.getNombre()
+    return this.getNombre();
   }
   get Edad() {
-    return this.getEdad()
+    return this.getEdad();
   }
   get Img() {
-    return this.getImg()
+    return this.getImg();
   }
   get Sonido() {
-    return this.getSonido()
+    return this.getSonido();
   }
-  get Comentarios(){
-    return this.getComentarios()
+  get Comentarios() {
+    return this.getComentarios();
   }
-  set Comentarios(comentarios){
-    return this.getComentarios(comentarios)
+  set Comentarios(comentarios) {
+    return this.getComentarios(comentarios);
   }
 }
 export default Animal;
