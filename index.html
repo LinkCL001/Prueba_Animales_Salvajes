@@ -35,8 +35,8 @@
           <div class="card-text my-3">
             <div class="form-group">
               <label for="exampleInputPassword1">Nombre del animal:</label>
-              <select class="form-control bg-dark text-white" id="animal">
-                <option disabled selected>Seleccione un animal</option>
+              <select class="form-control bg-dark text-white"  id="animal">
+                <option disabled selected value="" >Seleccione un animal</option>
                 <option value="Leon">León</option>
                 <option value="Lobo">Lobo</option>
                 <option value="Oso">Oso</option>
@@ -48,7 +48,7 @@
             <div class="form-group">
               <label for="exampleInputPassword1">Años de edad estimados:</label>
               <select class="form-control bg-dark text-white" id="edad">
-                <option disabled selected>Seleccione un rango de años</option>
+                <option disabled selected value="">Seleccione un rango de años</option>
 
                 <option value="0 - 1 años">0 - 1 años</option>
                 <option value="1 - 3 años">1 - 3 años</option>
@@ -107,7 +107,6 @@
     <script type="module" src="assets/js/index.js"></script>
     <script>
     function playAudio(sonido) {
-    console.log(sonido)
     sonido.play()
     } 
     </script>
