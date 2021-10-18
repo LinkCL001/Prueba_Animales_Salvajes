@@ -51,7 +51,7 @@ document.getElementById("btnRegistrar").addEventListener("click", async () => {
 const reloadTable = () => {
   const animalesTemplate = document.getElementById("Animales");
   animalesTemplate.innerHTML = "";
-  animalesInvestigados.forEach((a, i) => {
+  animalesInvestigados.forEach((a) => {
     animalesTemplate.innerHTML +=
     `<div class="px-3 pb-2 animales""${a.getNombre()}">
     <div class="card">${a.getImg()}
@@ -60,7 +60,7 @@ const reloadTable = () => {
           <hr class="w-50 mx-auto">
           <h6 class="card-text">Edad: ${a.getEdad()}</h6>
           <h6 class="card-text">Comentarios: <span class="text-dark">${a.getComentarios()}</span></h6>
-          <button class="btn btn-outline-warning" onclick=activarSonido('${i}')">Sonido</button>
+          <button class="btn btn-outline-warning" onclick="sonido.play()"('${a.getSonido()}')">Sonido</button>
         </div>
     </div>
   </div>
